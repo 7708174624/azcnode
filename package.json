@@ -1,0 +1,45 @@
+{
+  "name": "test_script1",
+  "version": "1.0.0",
+  "description": "Backend service for Anthology Student API Integration",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "npm run lint && npm run test:smoke",
+    "test:unit": "jest unit.test -c=./common/jest-config/jest.base.config.js --passWithNoTests",
+    "test:smoke": "jest smoke.test -c=./common/jest-config/jest.base.config.js",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
+    "prepare": "husky install"
+  },
+  "author": "Arizona",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "form-data": "^4.0.0",
+    "fs": "^0.0.1-security",
+    "json2csv": "^5.0.7",
+    "jszip": "^3.10.1",
+    "node-cron": "^3.0.2",
+    "node-fetch": "^2.6.7",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.30.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.1",
+    "eslint-plugin-jest": "^27.1.7",
+    "husky": "^8.0.2",
+    "jest": "^29.3.1",
+    "jest-extended": "^3.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test & lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix"
+    ]
+  }
+}
